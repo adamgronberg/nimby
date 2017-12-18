@@ -1,0 +1,6 @@
+edu.chalmers.crypt
+edu.chalmers.model
+edu.chalmers.persistence
+edu.chalmers.service
+nimbyAccServer
+nimbyAccServer.service

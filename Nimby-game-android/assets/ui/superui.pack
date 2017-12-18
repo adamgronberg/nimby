@@ -1,0 +1,82 @@
+
+superui.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+chatwindow
+  rotate: false
+  xy: 1, 588
+  size: 640, 400
+  split: 0, 0, 0, 0
+  orig: 640, 400
+  offset: 0, 0
+  index: -1
+chatbar
+  rotate: false
+  xy: 1, 521
+  size: 640, 65
+  split: 6, 2, 6, 5
+  orig: 640, 65
+  offset: 0, 0
+  index: -1
+spacebutton
+  rotate: false
+  xy: 643, 688
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+spacebuttonpressed
+  rotate: false
+  xy: 1, 219
+  size: 300, 300
+  orig: 300, 300
+  offset: 0, 0
+  index: -1
+dialogback
+  rotate: false
+  xy: 1, 12
+  size: 192, 205
+  orig: 192, 205
+  offset: 0, 0
+  index: -1
+scrollvertical
+  rotate: false
+  xy: 643, 615
+  size: 23, 71
+  split: 2, 0, 9, 11
+  orig: 23, 71
+  offset: 0, 0
+  index: -1
+blankbutton
+  rotate: false
+  xy: 945, 979
+  size: 9, 9
+  split: 0, 1, 0, 1
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+blankbuttonpressed
+  rotate: false
+  xy: 303, 510
+  size: 9, 9
+  split: 1, 2, 1, 2
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+bluebutton
+  rotate: false
+  xy: 1, 1
+  size: 9, 9
+  split: 1, 1, 0, 1
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+bluebuttonpressed
+  rotate: false
+  xy: 195, 208
+  size: 9, 9
+  split: 1, 2, 1, 2
+  orig: 9, 9
+  offset: 0, 0
+  index: -1

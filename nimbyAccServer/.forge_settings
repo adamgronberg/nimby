@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+<rootpath/>
+<rest>
+<applicationclass>
+<package>edu.chalmers.service</package>
+<name>RESTInit</name>
+</applicationclass>
+</rest>
+</configuration>

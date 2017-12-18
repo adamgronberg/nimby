@@ -1,0 +1,16 @@
+*.class
+*/bin/*
+*.classpath
+*thumbs.db
+*.metadata
+Nimby-game-android/gen
+*RemoteSystemsTempFiles/
+*.mwb.bak
+Nimby-game-android/lint.xml
+*.log
+*.autosave
+*.info
+*.swp
+
+erlide.log.lck
+*.dump

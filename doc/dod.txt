@@ -1,0 +1,5 @@
+The feature is implemented according to specification of said feature.
+Code is well-written, no need to rewrite or refactor as of this time.
+Code has automated tests written at all appropriate levels.
+Code has been inspected, approved and/or pair-programmed.
+The feature is well-documented with Javadoc and/or other appropriate means.

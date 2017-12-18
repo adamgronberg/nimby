@@ -1,0 +1,9 @@
+For Hibernate: 
+add/edit project class-path
+hibernate3.jar
+lib/required/
+/lib/jpa/
+
+
+For Mysql with JBoss
+https://zorq.net/b/2011/07/12/adding-a-mysql-datasource-to-jboss-as-7/

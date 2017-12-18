@@ -1,0 +1,9 @@
+*.class
+*/bin/*
+.classpath
+thumbs.db
+.metadata
+Nimby-game-android/gen
+RemoteSystemsTempFiles/
+/target
+/.apt_generated

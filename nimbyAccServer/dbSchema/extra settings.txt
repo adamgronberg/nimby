@@ -1,0 +1,14 @@
+	//bi-directional many-to-one association to Account
+	@ManyToOne
+	@JoinColumn(name="account", insertable = false, updatable = false)
+	private Account accountBean;
+
+	//bi-directional many-to-one association to Scoreboard
+	@ManyToOne
+	@JoinColumn(name="scoreBoard", insertable = false, updatable = false)
+	private Scoreboard scoreboard;
+	
+		@Lob
+	@Column(columnDefinition="blob")
+	private byte[] logo;
+	CONSTRAINT `right_rank` CHECK (rank LIKE 'Cadet' OR rank LIKE 'General' OR rank LIKE 'Admiral'))

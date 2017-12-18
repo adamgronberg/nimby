@@ -1,0 +1,171 @@
+\documentclass[11pt]{report}
+%Gummi|061|=)
+\title{\textbf{Project NIMBY}}
+
+\author{Viktor Sjölind, Lucas Wiman, Gustav Dahl, 
+Adam Grönberg, Mikael Stolpe}
+\begin{document}
+
+\maketitle
+\section{Foreword}
+
+This report reviews the programming project NIMBY for the course DAT065 at Chalmers University of technology. Project NIMBY is the result of giving five third year Computer Science students the opportunity to come up with a project idéa and realize the idéa within the contents of an eight week long course .We would like to thank our supervisor Sakib Sistek for this opportunity and for the support we have received during the project.
+
+\section{Summary}
+The creation and evolution of an computer game, especially an online multiplayer game can be quite difficult and complex. It requires a reasonable amount knowledge in computer programming and most of all, the ability to work in a group. The subject of this report will be the evolution of a game called NIMBY which as previously mentioned will be an online multiplayer game. Furthermore, the gameplay will take place in space and the game idea where the player builds their own spaceship and battles with against each other. The purpose of this report is learn how to do an scientific report for our upcoming bachelor thesis and become more experienced in how projects work as a future employee. This is project done at Chalmers University of Technology in Gothenburg. 
+In this report we would like to be able to answer the following questions:
+\begin{itemize}
+\item{Is it possible to create an multiplayer online game with the knowledge we currently possess?} 
+\item{Is it possible to design a functional and usable avatar system with text-to-voice and voice-to-text functionalities?}
+\item{How can a dynamic build system for ships be implemented?}
+\end{itemize}However as this is an halftime report it is not possible know the answers of them at present time.
+
+\section{Designations}
+\begin{itemize}
+\item{Java - An object oriented programming language.}
+\item{LibGDX - A library for Java, used when developing games.}
+\item{Box2D - Extension library for Libgdx to handle 2d physics.}
+\item{Kryonet - An interface used to connect a client to a server.}
+\item{Jboss 7 - An application server developed by Red Hat.}
+\item{RESTEasy - A Jboss framework used for creating RESTful web applications.}
+\item{RESTful - A Java API which lends support when creating web services.}
+\item{Hibernate - A Java library used for mapping relational databases with an object-oriented model.}
+\item{EJB - A server side component used to simplify development of applications.}
+\item{JPA - A Java programming language for managing relational databases.}
+\item{MySQL - A database management system.}
+\item{Interface - When used in this report, it relates to a Java interface.}
+\end{itemize}
+\section{Introduction}
+\subsection{Background}
+
+The gaming industry have been going through a revolution the past ten years. The climate has been going from a reality where most of the games published were created by large corporations, to a new climate where the indie game companies are becoming a more substantial part of the community. For this reason, the interest in programming has increased and it has become easier to develop and release software to the public. Both the kickstarter project and steams greenlight has made the way from a idea to a final product with a big support extremely accessible.
+
+Project NIMBY is supposed to be an action spaceship game, however there are already a few similar games on the market. But there is a few aspects that will make Project NIMBY unique, such as creation of ships with independent parts. Most 2D action spaceship games gives the player a selection of ships to choose from with the option to upgrade weapons as the player progresses. Multiplayer games of this nature are few and games which focus on building your own ship to fight are even fewer. Adding these elements together gives Project NIMBY a unique flair which can be considered rare on today’s market and should be competitive. Furthermore, the building aspect in games has greatly increased in popularity the last year from titles like MineCraft. 
+
+The aim with Project NIMBY is to make an amusing game with several unique elements which will make it stand out compared to other games within it the same area.
+
+The project is as mentioned above, built around larger parts. These parts consist of ship implementation, graphical programming, database construction, account server, match server, shipbuilding logic, ship selection, matchmaking, game logic, avatar system and the lobby. 
+Purpose
+
+The purpose of this project is to create a space game that is both unique and entertaining while implementing features that test the knowledge gained during our studies. The game shall have a plethora of features including a modular shipbuilding system, matchmaking for up to 64 players, the possibility for players to create their own communities.
+Boundaries
+
+Due to complexity and balancing issues, the shipbuilding system has been limited to placing ship parts on specified attachment nodes, to make sure the placement of parts is feasible. In the beginning, there was a plan to let players build the ships together, however this was very difficult to implement in such a way, that all players would find it entertaining. Another limitation that had to be implemented was to make the players unable to build large ships which usually has several seat with only one seat. The reason for this is was to make it easier to balance the gameplay.  
+Clarification of the issue
+
+There are several issues that needs to be accounted for when making this project. First how to make the shipbuilding process into something entertaining and unique. Secondly, the game must also be able to handle many players at once in a single match. A challenge is also to have all the different roles in the ship to be entertaining and to have a intriguing depth. Thirdly, how to implement the community based system.
+
+\subsection{Disposition}
+
+The chapters in this report are organized in such a way that you can start reading in any chapter. 
+Method
+
+The responsibility for the major parts of the project is divided up on each of the members of the project team. In addition to that a new project leader is assigned each week. As a result of this, every member of the project team will be challenged and has their own field of responsibility. 
+
+In order to make this game LibGDX is used, which provides many useful libraries and methods for game development. In addition to LibGDX, Box2D is used to implement the physics used in game. For network implementation Kryonet is used.
+Ship Implementation
+Ingress
+
+This describes how the ships are supposed to behave. A ship consists of several parts together. Each part has a set health and other different properties. The part are predefined and can not be changed by the users. Furthermore, the parts are either a equipment or a hull part, where the hull parts are the core building block that can connect to other hull block and is able to hold equipment. The places where hull parts connect and the places a equipment can be placed are predefined.
+Solution
+
+To get control of the resource flow in the program system that separates view and model were designed. Everything that is to be rendered implements the interface Renderable and everything that is to be updated implements the interface Entity. The parts of the ship each implements both Renderable and Entity, this way the ship parts and equipment can be implemented in the same file but the model and the view part of each object is executed separately.
+
+In order to handle physics simulation Box2D is used. Each part has a body that resides in the Box2D world. To these bodies force can be applied making the object move. Box2D also handles the welding that makes the parts stick together.
+Graphical programming
+Ingress 
+
+The user interface and the menus for the game, as well as how the ships are being rendered in the game. It is critical that all the important information is displayed in such a way that the user can easily understand what is happening in both the game and in menus.
+Solution
+
+At this point there is some basic menus used for options, account creation and logging in to the game. The login screen is illustrated in Figure 1.
+
+Figure 1
+
+\section{Lobby server}
+\subsection{Ingress}
+
+The server to which the user client always will be connected to when logged in. This will be the communication hub that route the different users chat messages to the correct receivers. The lobby server will also be responsible for matchmaking and making sure that both match server knows who is playing a match and that the players know to which match server to connect. 
+\subsection{Solution}
+
+The lobby need to handle two kinds of connection. Both match servers and game clients. To separate the data sent between them, a signal is sent from the game clients and match servers containing information about the connection. With this information the lobby server can easily distinguish between the two and therefore make the network more effective. 
+\section{Match Server}
+\subsection{Ingress}
+
+A match server will be able to handle multiple match instances. Each match will contain the same world that the game clients use and serve as a master world that all the game clients can sync with. The match server will always be connected to the lobby server.
+\subsection{Solution}
+
+In order to allow scaling of the solution, the load of hosting the matches is distributed over several servers. Further, each match server needs to run on a separate machine to guarantee that no other application causes drops in performance. 
+
+To keep all the separate game clients synchronized with a match, a game instance runs on the match server which at regular intervals sends snapshots of the status of the game to the connected game clients. 
+
+Each match server consists of two parts, a client and a server. In addition, the server is the connection between the different game clients and hosts the matches. The client is used to connect to the lobby server, this connection is then used to send the information about what ships and players which are supposed to be in the game.
+\section{Account Server}
+\subsection{Ingress}
+
+The account server will be the clients and match servers link to the database. This will handle all transactions related to the creating, updating, deleting and fetching of accounts, ships, federations, friends and parts.
+\subsection{Solution}
+
+The account server is loaded onto a Jboss 7 AS server instance. The project has been realized using RESTEasy as the endpoint connection to the client and the connection to the database is done with Hibernate EJB injection and JPA entities for the model. The database is hosted on a MySQL server which Jboss has a connection to.
+\section{Database}
+\subsection{Ingress}
+
+A database must be implemented to hold information about users, ships, federations and different parts a ship can hold. This must be connected to the account server for verification and security reasons.
+\subsection{Solution}
+
+The database has been designed using a relational database design. The main entity is the Account and several concepts are centered around this component, such as the friend system. Further entities are Ship, Part, Federation and Scoreboard. Relationships has been modeled to allow a friends system and Federation to be able to hold members with ranks, more specifics can be found in figure 2.
+
+Figure 2
+\section{Discussion and analysis}
+
+The account server is implemented as a Web Application due to good and established frameworks already exists that a majority of the project team already is familiar with. Furthermore, HTTP makes sending accounts and other user information very easy.
+
+
+At the vision stage of the project a cooperative building mode was planned. After discussing the matter further and more specifically querying why the game should have an cooperative building mode and in what way might it be entertaining, an important decision was made. A realization from this discussion was that in order for cooperative building to be entertaining, every participant needs to have an active role. To allow this, the shipbuilding process would need to have a level of complexity which would make building a ship by oneself to difficult to realize. Furthermore, ships of such size did not fit our vision for the match system. As a result of scaling down the size of the ships having several people building a spaceship becomes redundant. Bearing this in mind a decision was made to remove the cooperative building mode feature.
+
+
+To modularize the server side of the project was split into three parts: account server, match server and lobby server. The account server is responsible for validating user accounts and store them in the database. 
+
+
+The lobby server was first supposed to handle matches, chat and matchmaking. In order to make this scalable, the decision was made to have a separate match server. This decision also opened a possibility to have several match servers, which a load balancer in the lobby server could use to spread matches evenly among the match servers, depending on the current load on the different match servers. 
+
+
+Since the stage were a match can be run, has not yet been reached, no load tests has been run on the match servers. As such, the need for a load balancer has yet to be discovered. However, since it will be crucial to enable scaling of the hosting resources there are already plans to implement this, making it possible to host more games while still preserving the ability to guarantee good performance.
+\section{Conclusion}
+
+In conclusion, it is reasonable to say that the project is proceeding at a desirable pace such that the chances of deliver the product within deadline are looking good. The account server is at the moment finished and only requires some further testing. Furthermore, basic menus have been implemented and it is now possible to access all the different menus in the game. The base for the ship implementation is available and the development of the match and lobby servers are progressing well. In addition, further improvements to the user interface will be required. This includes the ship selection screen and additional  polishing on the existing game screens.g
+\section{Future plans}
+\subsection{Improvements}
+\subsubsection{Ship implementation}
+
+Each part of a ship are independent building blocks, that when connected are controlled by the owner of the ship for as long as the part is connected to the ship. Should a piece be blown off, it will no longer be considered a part of the ship and the owner thus loses control over that part. However, one of our goals is to add the possibility for several people to be a crew of single ship with each crewmember controlling individual sets of parts. A ship could thus have one engineer, several gunners and a pilot.
+\subsubsection{Graphical Programming}
+
+Several graphical improvements will be implemented for the following areas:  ship selection system, building the ship, matchmaking and the chat system. In addition, the ship selection screen will have a scrolling bar with pictures of all ships in the pool for the match. Every menu needs to be intuitive and simple to operate for each user. For the building screen, there will be a large window with all currently placed parts by the player and a toolbox, from where the user can pick the pieces he deems interesting.
+\subsubsection{Lobby Server}
+
+A load balancer will also be implemented to spread games equally on multiple servers to reduce the load a server will receive. Furthermore will the lobby server direct each client to the corresponding match server for the match which the player wishes join. 
+\subsubsection{Match Server}
+
+Load testing on the match server will be conducted in order to gather what data the load balancer has to aquire from the match servers while querying their load status.
+
+Each match server also needs to verify tokens received from connected game clients before starting the match.
+\subsubsection{Account Server}
+
+Most features are finished in the account server with exception of test classes which will be implemented. There may become some need to update the server as the project progress. One possible addition to the game is a score system, if this is implemented there will be a need to handle this in the account server.
+\subsection{New Features}
+\subsubsection{Ship selection} 
+
+Refers to how the ships are selected for a match. When a player tries to join the matchmaking queue, they are asked which ships they would like to bring from the ones that they have built into that specific match. All the ships from the different players are then put into a pool. Each player receives a fixed amount of votes which they can spend to vote up the ship they want to play in that pool. 
+
+When the voting is complete, an algorithm first selects the ship with the most votes and removes the number of seats it has from a counter, with the size of the current number of players. If the next ship determined by votes, has more free seats than there are in the counter, the algorithm will not select that ship and go to the ship next in line. The purpose of this is to prevent such a situation where the last ship has ten seats and there are two players in the counter, then it will fill out those spots in the selection by selecting a ship at random with a satisfactory number of seats. The result of this is that the number of seats in all ships together is equal to the number of participants in the team.
+
+The players are then given the selection of ships which were elected and it is up to the players to fill those seats. No player is guaranteed to get a seat in a ship that they voted on but will be able to get a spot in one of the other selected ships. It is possible for a player to use a ship built by someone else.
+\subsubsection{Avatar system}
+
+The idea of the avatar system is a small voice controlled pet or helper AI. The purpose of the avatar system is to aid the user with small tasks on the ship when it is needed and deliver information between other players and the user. The avatar system is specified to work with both text-to-speech from the avatar and speech-to-text to the avatar. The later one is however much more difficult to implement and will be limited to a number of fixed phrases. The reason for this is the complexity and nature of languages. Undoubtedly, in order for this to work every phrase in the entire human language would need to be programmed into it.
+\subsubsection{Client}
+
+There is a need to construct a package which handles the connection between the client and the account server. Every part of this needs to be implemented, this includes account, federation, friend, ship and part.
+
+\end{document}

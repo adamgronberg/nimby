@@ -1,0 +1,60 @@
+
+alluipack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+chatwindow
+  rotate: false
+  xy: 0, 80
+  size: 640, 400
+  split: 0, 0, 0, 0
+  orig: 640, 400
+  offset: 0, 0
+  index: -1
+dialogback
+  rotate: false
+  xy: 640, 236
+  size: 245, 244
+  orig: 245, 244
+  offset: 0, 0
+  index: -1
+scrollvertical
+  rotate: false
+  xy: 0, 9
+  size: 23, 71
+  split: 1, 1, 9, 11
+  orig: 23, 71
+  offset: 0, 0
+  index: -1
+blankbutton
+  rotate: false
+  xy: 640, 227
+  size: 9, 9
+  split: 0, 1, 0, 1
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+blankbuttonpressed
+  rotate: false
+  xy: 885, 471
+  size: 9, 9
+  split: 1, 2, 1, 2
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+bluebutton
+  rotate: false
+  xy: 0, 0
+  size: 9, 9
+  split: 1, 1, 0, 1
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
+bluebuttonpressed
+  rotate: false
+  xy: 23, 71
+  size: 9, 9
+  split: 1, 2, 1, 2
+  orig: 9, 9
+  offset: 0, 0
+  index: -1
